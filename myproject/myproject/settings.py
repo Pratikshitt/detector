@@ -27,7 +27,7 @@ SECRET_KEY = '%_=n9^%y-6sq9w($%7*0bhrf+37#dt-j1@f%wg*_%r@2^ab5^o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['intense-stream-64362.herokuapp.com']
 
 
 # Application definition
@@ -120,6 +120,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR,]
