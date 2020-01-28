@@ -30,6 +30,7 @@ cytoolz==0.9.0.1
 dask==0.17.5
 decorator==4.3.0
 distributed==1.21.8
+dj-database-url==0.5.0
 Django==2.2.7
 django-multiselectfield==0.1.11
 docutils==0.14
@@ -165,6 +166,7 @@ virtualenv==16.7.7
 wcwidth==0.1.7
 webencodings==0.5.1
 Werkzeug==0.14.1
+whitenoise==5.0.1
 widgetsnbextension==3.2.1
 win-inet-pton==1.0.1
 win-unicode-console==0.5
