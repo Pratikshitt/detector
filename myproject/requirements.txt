@@ -80,10 +80,8 @@ numexpr==2.6.5
 numpy==1.17.3
 numpydoc==0.8.0
 oauthlib==3.1.0
-odo==0.5.1
 olefile==0.45.1
 openpyxl==2.5.3
-opt-einsum==3.1.0
 packaging==17.1
 pandas==0.23.0
 pandocfilters==1.4.2
@@ -112,7 +110,6 @@ pycurl==7.43.0.1
 pyflakes==1.6.0
 Pygments==2.2.0
 pylint==2.3.1
-pyodbc==4.0.23
 pyOpenSSL==18.0.0
 pyparsing==2.2.0
 PySocks==1.6.8
