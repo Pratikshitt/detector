@@ -27,7 +27,7 @@ SECRET_KEY = '%_=n9^%y-6sq9w($%7*0bhrf+37#dt-j1@f%wg*_%r@2^ab5^o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['intense-stream-64362.herokuapp.com']
+ALLOWED_HOSTS = ['intense-stream-64362.herokuapp.com','127.0.0.1']
 
 
 # Application definition

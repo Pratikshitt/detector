@@ -15,8 +15,8 @@ class MyModel(forms.ModelForm):
         model = MyModel
         fields="__all__"
 
-class Remedies(forms.ModelForm):
+# class Remedies(forms.ModelForm):
 
-    class Meta:
-        model=Remedies
-        fields="_all__"        
+#     class Meta:
+#         model=Remedies
+#         fields="_all__"        

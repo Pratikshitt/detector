@@ -33,6 +33,8 @@ def form_name_view(request):
                 
                 form.save(commit=True)
                 some_var = form.cleaned_data.get('Symptoms')
+                days=form.cleaned_data.get('Days')
+                print(days)
                 print(some_var)
                 for i in range(0, len(some_var)): 
                     some_var[i] = int(some_var[i])
@@ -52,7 +54,11 @@ def form_name_view(request):
 
                     
                 prediction=fake_model.fake_predict(l[0],l[1],l[2],l[3],l[4],l[5],l[6],l[7],l[8],l[9],l[10],l[11],l[12],l[13],l[14],l[15],l[16],l[17],l[18],l[19],l[20],l[21],l[22],l[23],l[24],l[25],l[26],l[27],l[28],l[29],l[30])
-                return render(request,'result.html',{'prediction':prediction})  
+                if days>3:
+                    return redirect('/disease') 
+                else:
+                    return HttpResponse("Wait for some more time")    
+                
   
                 #return redirect('/disease')     
                 #listt=[]
@@ -73,13 +79,17 @@ def form_name_view(request):
     #    print("Exception occured")  
 
 
-# def disease(request):
-#     if request.method=="POST":
-#         form=forms.Remedies()
-#         return render(request,'new.html',{''})  
-#     else:
+def disease(request):
+    if request.method=="POST":
+        data=Remedies.objects.filter(Diseasename=prediction)[0]
+        print(data.Diseasename)
+        data_list=data.Remedies.split(r'\n')
+        # print(data_list)
+        
+        return render(request,'remedy.html',{'data':data,'data_list':data_list})  
+    else:
 
-#         return render(request,'result.html',{'prediction':prediction})  
+        return render(request,'result.html',{'prediction':prediction})  
 
 
 

@@ -16,9 +16,15 @@
 <body>
     <div class="container">
         <form action="" method="POST">
-
+            <!-- <p class="title">{{ form.question }}</p>
+    {% for choice in form.choice_set.all %}
+        <input type="checkbox" name="{{ choice }}" id="{{ choice }}{{ forloop.counter }}" 
+                value="{{ choice.id }}">
+        <label for="{{ choice }}{{ forloop.counter }}">{{ choice }}</label>
+         {% endfor %} -->
          
-            {{ form.as_p }}
+          {{ form.as_p }}
+            
            
             {% csrf_token %}
             <input type="submit" class="btn btn-primary" name="" id="">

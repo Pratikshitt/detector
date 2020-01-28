@@ -16,9 +16,14 @@
 <body>
     <div class="container">
         <form action="" method="POST">
-            {{prediction}}
+            <!-- {{ data.Remedies }} -->
+            {% for ditem in data_list %}
+            <br>
+            {{ditem}}
+           
+            {% endfor %}
             {% csrf_token %}
-            <input type="submit" class="btn btn-primary" name="" id="">
+            
         </form>
         
     </div>

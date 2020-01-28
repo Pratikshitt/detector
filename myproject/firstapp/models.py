@@ -62,15 +62,14 @@ MY_CHOICES2 = ((1, 'Headache'),
                
 
 
-class MyModel(models.Model):
-
-      
-    Symptoms = MultiSelectField(choices=MY_CHOICES2
-                                 )
+class MyModel(models.Model):      
+    Symptoms = MultiSelectField(choices=MY_CHOICES2)
+    #  Days=models.IntegerField()
+    Days= models.IntegerField(null=True ,blank=True)
 
 
 class Remedies(models.Model):
-    Diseasename=models.CharField()
-    Remedies=models.CharField()
+    Diseasename=models.CharField(max_length=2225)
+    Remedies=models.CharField(max_length=2225)
 
 
