@@ -1,5 +1,5 @@
 from django import forms
-from firstapp.models import ModelForm,MyModel
+from firstapp.models import ModelForm,MyModel,Remedies
 
 class FormName(forms.ModelForm):
     #Name=forms.CharField()
@@ -14,3 +14,9 @@ class MyModel(forms.ModelForm):
     class Meta:
         model = MyModel
         fields="__all__"
+
+class Remedies(forms.ModelForm):
+
+    class Meta:
+        model=Remedies
+        fields="_all__"        

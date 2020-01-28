@@ -69,3 +69,8 @@ class MyModel(models.Model):
                                  )
 
 
+class Remedies(models.Model):
+    Diseasename=models.CharField()
+    Remedies=models.CharField()
+
+
