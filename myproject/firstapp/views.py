@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from firstapp.models import topic,webpage,ModelForm,MyModel,Remedies
 from . import forms
 from myproject import fake_model
-global prediction
+
 # Create your views here.
 
 #def index(request):
@@ -24,7 +24,7 @@ def first(request):
 
 def form_name_view(request):
    # form=forms.FormName()
-        global prediction
+        
    # try:
         form=forms.MyModel()
         if request.method=="POST":
@@ -55,7 +55,7 @@ def form_name_view(request):
                     
                 prediction=fake_model.fake_predict(l[0],l[1],l[2],l[3],l[4],l[5],l[6],l[7],l[8],l[9],l[10],l[11],l[12],l[13],l[14],l[15],l[16],l[17],l[18],l[19],l[20],l[21],l[22],l[23],l[24],l[25],l[26],l[27],l[28],l[29],l[30])
                 if days>3:
-                    return redirect('/disease') 
+                    return redirect('/disease',prediction) 
                 else:
                     return HttpResponse("Wait for some more time")    
                 
@@ -79,7 +79,7 @@ def form_name_view(request):
     #    print("Exception occured")  
 
 
-def disease(request):
+def disease(request,prediction):
     if request.method=="POST":
         data=Remedies.objects.filter(Diseasename=prediction)[0]
         print(data.Diseasename)
