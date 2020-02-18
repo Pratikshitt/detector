@@ -18,8 +18,11 @@ def first(request):
    # print(listt)
     #myweb={"list":"listt"}
     if request.method=="POST":
-        return redirect('/form')  
-
+        print(request.POST.get('Contact'))
+        if request.POST.get("Predict"):
+            return redirect('/form')
+        if request.POST.get("Contact"):
+            return redirect('/contact')
     return render(request,'firstt.html')    
 
 def form_name_view(request):
@@ -52,11 +55,17 @@ def form_name_view(request):
                 l=li           
                 prediction=fake_model.fake_predict(l[0],l[1],l[2],l[3],l[4],l[5],l[6],l[7],l[8],l[9],l[10],l[11],l[12],l[13],l[14],l[15],l[16],l[17],l[18],l[19],l[20],l[21],l[22],l[23],l[24],l[25],l[26],l[27],l[28],l[29],l[30])
                 request.session['prediction']=prediction
-                if days>3:
-                    return redirect('/disease') 
-                else:
-                    return HttpResponse("Wait for some more time")    
-                
+                if request.POST.get('SUBMIT'):
+                    if days>3:
+                        return redirect('/disease') 
+                    else:
+                        return HttpResponse("Wait for some more time")   
+
+                 
+                returnbutton= request.POST.get('Back')
+                print(returnbutton)
+                if returnbutton:
+                   return redirect('/index')
   
                 #return redirect('/disease')     
                 #listt=[]
@@ -90,6 +99,14 @@ def disease(request):
     else:
         return render(request,'result.html',{'prediction':prediction})  
 
+
+def contact(request):
+    if request.method=="POST":
+        returnbutton= request.POST.get('Back')
+               
+        if returnbutton:
+            return redirect('/index')
+    return render(request,'contact.html')
 
 
     

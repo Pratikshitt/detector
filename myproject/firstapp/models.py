@@ -63,7 +63,7 @@ MY_CHOICES2 = ((1, 'Headache'),
 
 
 class MyModel(models.Model):      
-    Symptoms = MultiSelectField(choices=MY_CHOICES2)
+    Symptoms = MultiSelectField(choices=MY_CHOICES2,blank=True)
     #  Days=models.IntegerField()
     Days= models.IntegerField(null=True ,blank=True)
 

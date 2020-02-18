@@ -14,6 +14,7 @@ class MyModel(forms.ModelForm):
     class Meta:
         model = MyModel
         fields="__all__"
+        widgets = {'Symptoms': forms.CheckboxSelectMultiple}
 
 # class Remedies(forms.ModelForm):
 

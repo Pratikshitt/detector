@@ -24,5 +24,5 @@ urlpatterns = [
     path('index',views.first,name="newindex"),
     path("form",views.form_name_view,name="form"),
     path('disease',views.disease,name="disease"),
-   
+    path('contact',views.contact,name='contact'),
 ]

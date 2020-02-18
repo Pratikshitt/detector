@@ -14,17 +14,25 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
+    
+   
         <form action="" method="POST">
-            
+            <nav class="navbar navbar-dark bg-dark justify-content-between">
+                <a class="navbar-brand">Predictor</a>
+                <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="Contact" id="" value="CONTACT">
+                  
+                
+               
+              </nav> 
+              <div class="container">
     <div class="middle">
         <h1><b>Disease Predictor</b></h1>
         <hr>
         <br>
         <br>
-            
+        <input type="submit" class="btn btn-primary" name="Predict" id="" value="GO">
             {% csrf_token %}
-            <input type="submit" class="btn btn-primary" name="" id="" value="GO">
+            
         </form>
         </div>
         
