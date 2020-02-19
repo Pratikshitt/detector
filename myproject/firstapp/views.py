@@ -90,13 +90,19 @@ def disease(request):
     prediction = request.session['prediction']
     print(prediction)
     if request.method=="POST":
+        if request.POST.get("Back"):
+            return redirect('/form')
         data=Remedies.objects.filter(Diseasename=prediction)[0]
         print(data.Diseasename)
         data_list=data.Remedies.split(r'\n')
         # print(data_list)
+       
+        if request.POST.get('Remedies'):
+            return redirect('/remedy')
         
-        return render(request,'remedy.html',{'data':data,'data_list':data_list})  
+        
     else:
+         
         return render(request,'result.html',{'prediction':prediction})  
 
 
@@ -108,6 +114,17 @@ def contact(request):
             return redirect('/index')
     return render(request,'contact.html')
 
+
+def remedy(request):
+    prediction = request.session['prediction']
+    data=Remedies.objects.filter(Diseasename=prediction)[0]
+    print(data.Diseasename)
+    data_list=data.Remedies.split(r'\n')
+    
+    if request.method=="POST":
+        if(request.POST.get("Back")):
+            return redirect('/disease')    
+    return render(request,'remedy.html',{'data':data,'data_list':data_list})  
 
     
                                       

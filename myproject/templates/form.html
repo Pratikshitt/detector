@@ -25,9 +25,9 @@
                  
                 
               </nav>
-              <h3>Select Your Symptoms:</h3>  
+              
          <div class="container"> 
-                 
+            <h5><b>Select Your Symptoms:</b></h5>      
           {% for value, text in form.Symptoms.field.choices %}
           <div class="ui slider checkbox mslctfld">
             <input id="id_providers_{{ forloop.counter0 }}" name="{{ form.Symptoms.name }}" type="checkbox" value="{{ value }}"{% if value in checked_providers %} checked="checked"{% endif %}>

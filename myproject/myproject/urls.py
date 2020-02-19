@@ -25,4 +25,5 @@ urlpatterns = [
     path("form",views.form_name_view,name="form"),
     path('disease',views.disease,name="disease"),
     path('contact',views.contact,name='contact'),
+    path('remedy',views.remedy,name='remedy'),
 ]

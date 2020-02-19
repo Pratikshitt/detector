@@ -14,12 +14,22 @@
     <title>Document</title>
 </head>
 <body>
+    
+        <form action="" method="POST">
+    <nav class="navbar navbar-dark bg-dark justify-content-between">
+        <a class="navbar-brand">Predictor</a>
+        <input type="submit" class="btn btn-primary" name="Back" id="" value="Back">
+        {% csrf_token %} 
+    </form>
+         
+        
+      </nav>
     <div class="container">
         <form action="" method="POST">
             <!-- {{ data.Remedies }} -->
             {% for ditem in data_list %}
             <br>
-            {{ditem}}
+          <b>{{ditem}}</b>  
            
             {% endfor %}
             {% csrf_token %}

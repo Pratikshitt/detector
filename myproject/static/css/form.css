@@ -1,10 +1,12 @@
-/* body, html {
+ body, html {
     height: 100%;
-    /* background:url("/static/images/symp.jpg"); */
+   
+     background:url("/static/images/bg.jpg") transparent ; 
+    
+     background-size:cover;
+  } 
 
-    /* background-size:cover;
-  } */ 
-  
+ 
   .bgimg {
    
    
@@ -45,7 +47,7 @@
    .container{
     position: relative;
     top: 50px; 
-    left: 130px;
+    left: 250px;
     
    } 
    .mslctfld{
