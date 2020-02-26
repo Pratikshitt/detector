@@ -36,7 +36,7 @@ MY_CHOICES2 = ((1, 'Headache'),
                (9, 'Weight Loss'),
                (10, 'Dehydration'),
                (11, 'Stomachache'),
-               (12, 'Sweet And Chill'),
+               (12, 'Sweat And Chill'),
                (13, 'Tiredness'),
                (14, 'Loss of Apetite'),
                (15, 'Greyish White Spot on Cheek'),
@@ -55,7 +55,7 @@ MY_CHOICES2 = ((1, 'Headache'),
                (28, 'Dry Mouth'),
                (29, 'Rapid Heart Rate'),
                (30, 'Redness of Eye'),
-               (31, 'Lymphadenopathy')
+               
                
                )
              

@@ -9,9 +9,9 @@ def fake_predict(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa,ab,ac,ad
     elif u==1:
         prediction='Chicken Pox'
     elif o==1:
-        prediction="Measales"
+        prediction="Measles"
     elif ad==1:
-        prediction="Conjuctivities"    
+        prediction="Conjuctivitis"    
     elif prediction==0:
         prediction="Anaemia"
     elif prediction==1:
@@ -34,7 +34,7 @@ def fake_predict(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa,ab,ac,ad
         prediction="Typhoid" 
     elif prediction==7:
         prediction="Influenza" 
-    elif prediction==3:
+    else :
         prediction="Cholera" 
                                               
     return prediction
