@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from firstapp.models import topic,webpage,ModelForm,MyModel,Remedies
+from firstapp.models import topic,webpage,ModelForm,MyModel,GeneralRemedies,AuyervedicRemedies
 from . import forms
 from myproject import fake_model
 
@@ -92,13 +92,17 @@ def disease(request):
     if request.method=="POST":
         if request.POST.get("Back"):
             return redirect('/form')
-        data=Remedies.objects.filter(Diseasename=prediction)[0]
+        data=GeneralRemedies.objects.filter(Diseasename=prediction)[0]
+        Adata=AuyervedicRemedies.objects.filter(Diseasenam=prediction)[0]
         print(data.Diseasename)
         data_list=data.Remedies.split(r'\n')
+
         # print(data_list)
        
-        if request.POST.get('Remedies'):
+        if request.POST.get('GeneralRemedies'):
             return redirect('/remedy')
+        if request.POST.get('AuyervedicRemedies'):
+            return redirect('/Aremedy')
         
         
     else:
@@ -117,7 +121,7 @@ def contact(request):
 
 def remedy(request):
     prediction = request.session['prediction']
-    data=Remedies.objects.filter(Diseasename=prediction)[0]
+    data=GeneralRemedies.objects.filter(Diseasename=prediction)[0]
     print(data.Diseasename)
     data_list=data.Remedies.split(r'\n')
     
@@ -125,6 +129,18 @@ def remedy(request):
         if(request.POST.get("Back")):
             return redirect('/disease')    
     return render(request,'remedy.html',{'data':data,'data_list':data_list})  
+
+
+def Aremedy(request):
+    prediction = request.session['prediction']
+    Adata=AuyervedicRemedies.objects.filter( Diseasenam=prediction)[0]
+    
+    data_list=Adata.Remedie.split(r'\n')
+    
+    if request.method=="POST":
+        if(request.POST.get("Back")):
+            return redirect('/disease')    
+    return render(request,'Aremedy.html',{'Adata':Adata,'data_list':data_list})      
 
     
                                       

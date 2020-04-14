@@ -1,5 +1,5 @@
 from django import forms
-from firstapp.models import ModelForm,MyModel,Remedies
+from firstapp.models import ModelForm,MyModel,GeneralRemedies,AuyervedicRemedies
 
 class FormName(forms.ModelForm):
     #Name=forms.CharField()
@@ -16,8 +16,13 @@ class MyModel(forms.ModelForm):
         fields="__all__"
         widgets = {'Symptoms': forms.CheckboxSelectMultiple}
 
-# class Remedies(forms.ModelForm):
+class GeneralRemedies(forms.ModelForm):
 
-#     class Meta:
-#         model=Remedies
-#         fields="_all__"        
+    class Meta:
+        model=GeneralRemedies
+        fields="__all__"        
+class AuyervedicRemedies(forms.ModelForm):
+
+    class Meta:
+        model=AuyervedicRemedies
+        fields="__all__"               

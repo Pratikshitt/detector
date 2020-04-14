@@ -68,8 +68,13 @@ class MyModel(models.Model):
     Days= models.IntegerField(null=False ,blank=True)
 
 
-class Remedies(models.Model):
+class GeneralRemedies(models.Model):
     Diseasename=models.CharField(max_length=2225)
     Remedies=models.CharField(max_length=2225)
+
+class AuyervedicRemedies(models.Model):
+    Diseasenam=models.CharField(max_length=2225)
+    Remedie=models.CharField(max_length=2225)
+    
 
 
