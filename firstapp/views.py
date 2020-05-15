@@ -32,7 +32,10 @@ def first(request):
         ipaddress = request.META.get('REMOTE_ADDR')
     get_ip= ip() 
     if ip.objects.exists():
-        if ip.objects.get(ip_address=ipaddress):
+        
+        x=(ip.objects.filter(ip_address=ipaddress).exists())
+        print(x)
+        if x:
             get_ip= ip.objects.get(ip_address=ipaddress)
             print(get_ip.pub_date)
             print('Already there')
@@ -64,7 +67,7 @@ def first(request):
         if request.POST.get("Predict"):
            
             
-            if ip.objects.get(ip_address=ipaddress):
+            if ip.objects.filter(ip_address=ipaddress).exists():
                 get_ip= ip.objects.get(ip_address=ipaddress)
                 x=datetime.date.today()
                 print(x.day)
