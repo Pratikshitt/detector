@@ -1,5 +1,5 @@
 from django import forms
-from firstapp.models import ModelForm,MyModel,GeneralRemedies,AuyervedicRemedies
+from firstapp.models import ModelForm,MyModel,GeneralRemedies,AuyervedicRemedies,HomeopathicRemedies
 
 class FormName(forms.ModelForm):
     #Name=forms.CharField()
@@ -26,3 +26,9 @@ class AuyervedicRemedies(forms.ModelForm):
     class Meta:
         model=AuyervedicRemedies
         fields="__all__"               
+
+class HomeopathicRemedies(forms.ModelForm):
+
+    class Meta:
+        model=HomeopathicRemedies
+        fields="__all__"                       

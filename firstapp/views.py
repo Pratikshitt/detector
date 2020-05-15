@@ -1,7 +1,11 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from firstapp.models import topic,webpage,ModelForm,MyModel,GeneralRemedies,AuyervedicRemedies
+from firstapp.models import topic,webpage,ModelForm,MyModel,GeneralRemedies,AuyervedicRemedies,HomeopathicRemedies,ip
 from . import forms
+import datetime
+# from dateutil import relativedelta
+
+
 from myproject import fake_model
 
 # Create your views here.
@@ -17,10 +21,75 @@ def first(request):
    # listt = topic.objects.all
    # print(listt)
     #myweb={"list":"listt"}
+    # x,y=get_client_ip(request)
+    # print(x)
+    # print(y)
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+
+    if x_forwarded_for:
+        ipaddress = x_forwarded_for.split(',')[-1].strip()
+    else:
+        ipaddress = request.META.get('REMOTE_ADDR')
+    get_ip= ip() 
+    if ip.objects.exists():
+        if ip.objects.get(ip_address=ipaddress):
+            get_ip= ip.objects.get(ip_address=ipaddress)
+            print(get_ip.pub_date)
+            print('Already there')
+    #import datetime
+        else:
+            get_ip.ip_address= ipaddress
+            get_ip.pub_date = datetime.date.today()
+            get_ip.save()
+    else:
+        get_ip.ip_address= ipaddress
+        get_ip.pub_date = datetime.date.today()
+        get_ip.save()
+    
+
+        
+    #imported class from model
+    
+    
+    
     if request.method=="POST":
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+
+        if x_forwarded_for:
+            ipaddress = x_forwarded_for.split(',')[-1].strip()
+        else:
+            ipaddress = request.META.get('REMOTE_ADDR')
         print(request.POST.get('Contact'))
+        get_ip= ip.objects.get(ip_address=ipaddress)
         if request.POST.get("Predict"):
-            return redirect('/form')
+           
+            
+            if ip.objects.get(ip_address=ipaddress):
+                get_ip= ip.objects.get(ip_address=ipaddress)
+                x=datetime.date.today()
+                print(x.day)
+                
+                y=get_ip.pub_date
+                print(y.day)
+                # date_format = "%H:%M:%S"
+                # time_start = str(get_ip.pub_date)
+                # time_end = str(instance.datetime.date.today())
+
+     # Now to get the time difference.
+                # diff = datetime.strptime(time_end, date_format) - datetime.strptime(time_start, date_format)
+
+     # Get the time in hours i.e. 9.60, 8.5
+                result =x.day-y.day
+                if(result>3):
+
+                    return HttpResponse("PLs Visit Doctor asap")
+                else:
+                    return redirect('/form')
+            else:
+                return 1      
+
+            
+            
         if request.POST.get("Contact"):
             return redirect('/contact')
     return render(request,'firstt.html')    
@@ -103,6 +172,8 @@ def disease(request):
             return redirect('/remedy')
         if request.POST.get('AuyervedicRemedies'):
             return redirect('/Aremedy')
+        if request.POST.get('HomeopathicRemedies'):
+            return redirect('/Hremedy')    
         
         
     else:
@@ -140,7 +211,35 @@ def Aremedy(request):
     if request.method=="POST":
         if(request.POST.get("Back")):
             return redirect('/disease')    
-    return render(request,'Aremedy.html',{'Adata':Adata,'data_list':data_list})      
+    return render(request,'Aremedy.html',{'Adata':Adata,'data_list':data_list})
+def Hremedy(request):
+    prediction = request.session['prediction']
+    Hdata=HomeopathicRemedies.objects.filter( Diseasena=prediction)[0]
+    
+    data_list=Hdata.Remedi.split(r'\n')
+    
+    if request.method=="POST":
+        if(request.POST.get("Back")):
+            return redirect('/disease')    
+    return render(request,'Hremedy.html',{'Adata':Hdata,'data_list':data_list})   
+
+# def my_post_view(request, post_id):
+#     #you could check for logged in users as well.
+#     created = TrackedPosts.objects.get_or_create( ip=request.ip)
+#     print(created) #note, not actual api
+#     if created:
+#         created.post.count += 1
+#         created.post.save()
+#     return 1         
+
+# def get_client_ip(request):
+#     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+#     if x_forwarded_for:
+#         ip = x_forwarded_for.split(',')[0]
+#     else:
+#         ip = request.META.get('REMOTE_ADDR')
+#         ip.pub_date = datetime.date.today() 
+#     return ip,ip.pub_date
 
     
                                       

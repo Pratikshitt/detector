@@ -75,6 +75,14 @@ class GeneralRemedies(models.Model):
 class AuyervedicRemedies(models.Model):
     Diseasenam=models.CharField(max_length=2225)
     Remedie=models.CharField(max_length=2225)
+
+class HomeopathicRemedies(models.Model):
+    Diseasena=models.CharField(max_length=2225)
+    Remedi=models.CharField(max_length=2225)   
+
+class ip(models.Model):
+    pub_date = models.DateTimeField('date published')
+    ip_address = models.GenericIPAddressField()
     
 
 
