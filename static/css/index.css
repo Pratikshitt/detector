@@ -40,5 +40,10 @@ body, html {
     margin: auto;
     width: 40%;}
 
+.navbar-brand{
+  text-align: left;
+  margin-left: 0px;
+}    
+
   
   

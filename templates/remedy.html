@@ -17,7 +17,7 @@
     
         <form action="" method="POST">
     <nav class="navbar navbar-dark bg-dark justify-content-between">
-        <a class="navbar-brand">Predictor</a>
+        <a class="navbar-brand">DiseasePredictor</a>
         <input type="submit" class="btn btn-primary" name="Back" id="" value="Back">
         {% csrf_token %} 
     </form>
@@ -25,12 +25,13 @@
         
       </nav>
     <div class="container">
+         <b>Some Remedies</b>
         <form action="" method="POST">
             <!-- {{ data.Remedies }} -->
             {% for ditem in data_list %}
             <br>
-          <b>{{ditem}}</b>  
-           
+          {{ditem}}
+           <br>
             {% endfor %}
             {% csrf_token %}
             

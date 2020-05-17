@@ -32,10 +32,17 @@ def first(request):
         ipaddress = request.META.get('REMOTE_ADDR')
     get_ip= ip() 
     if ip.objects.exists():
+        l='.'.join(ipaddress.split('.')[0:-2]) 
+        print(l)
         
         x=(ip.objects.filter(ip_address=ipaddress).exists())
+        get_ip= ip.objects.get(ip_address=ipaddress)
+        y='.'.join(get_ip.ip_address.split('.')[0:-2]) 
+       
         print(x)
-        if x:
+        print(y)
+        print(y==l)
+        if (x and (y==l)):
             get_ip= ip.objects.get(ip_address=ipaddress)
             print(get_ip.pub_date)
             print('Already there')
